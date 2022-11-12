@@ -100,9 +100,20 @@ class Note:
             dec_file.write(decrypted)
 
     def get_key():
-        key = Fernet.generate_key() #this is your "password"
-        with open('mykey.key', 'wb') as mykey:
-            mykey.write(key)
+        if os.path.exists('mykey.key'):
+            answer = input(f'mykey.key already exists! \n Would you like to change it? (y/n): ')
+            if answer == 'n':
+                Note.doRun()
+            elif answer == 'y':
+                confirm = input('Are you sure!? (y/n)')
+                if confirm == 'n':
+                    print('Aborted!')
+                    sleep(2)
+                    Note.doRun()
+                elif confirm == 'y':
+                    key = Fernet.generate_key() #this is your "password"
+                    with open('mykey.key', 'wb') as mykey:
+                        mykey.write(key)
 
     def menu():
         print(' ________________')
