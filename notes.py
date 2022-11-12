@@ -144,7 +144,7 @@ class Note:
         elif x in gk:
             print('-Get Key-')
             sleep(.5)
-            Notes.get_key()    
+            Note.get_key()    
         else:
             print('Sorry, an option!')
             sleep(1)
