@@ -148,4 +148,4 @@ class Note:
         else:
             print('Sorry, an option!')
             sleep(1)
-            doRun()
+            Note.doRun()
