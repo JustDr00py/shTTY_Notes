@@ -99,10 +99,10 @@ class Note:
         with open(f'./notes/{x}.txt', 'wb') as dec_file:
             dec_file.write(decrypted)
 
-        def get_key():
-            key = Fernet.generate_key() #this is your "password"
-            with open('mykey.key', 'wb') as mykey:
-                mykey.write(key)
+    def get_key():
+        key = Fernet.generate_key() #this is your "password"
+        with open('mykey.key', 'wb') as mykey:
+            mykey.write(key)
 
     def menu():
         print(' ________________')
@@ -144,7 +144,7 @@ class Note:
         elif x in gk:
             print('-Get Key-')
             sleep(.5)
-            notes.get_key()    
+            Notes.get_key()    
         else:
             print('Sorry, an option!')
             sleep(1)
