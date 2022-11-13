@@ -7,14 +7,9 @@ path = "./notes"
 dir_list = os.listdir(path)
 # prints all files
 
-q = ""
 nn = ['1','new', 'New', 'New Note', 'new note', 'n', 'nn']
-rn = ['2','read', 'Read', 'Read Note', 'read note', 'r', 'rn']
+on = ['2','open', 'Open', 'Open Note', 'open note', 'o', 'r']
 gk = ['3', 'key', 'gk', 'get key', 'get']
-
-
-path = "./notes"
-dir_list = os.listdir(path)
 
 class Note:
     def __init__(self, title, msg):
@@ -25,19 +20,11 @@ class Note:
         m1 = input('Title: ')
         m2 = input('Note: ')
         print(m2)
-
         note = Note(m1,m2)
-        #print(f'Name: \n {m1}')
-        #print(f'Note: \n {m2}')
-
         print(f'{note.title} \n {note.msg}')
-
-        try:
-            f = open(f'./notes/{note.title}.txt', 'xt')
-            f.write(f'{note.msg}')
-            f.close()
-        except:
-            print('File Exists!')
+        f = open(f'./notes/{note.title}.txt', 'xt')
+        f.write(f'{note.msg}')
+        f.close()
         return print(f'{note.title} {note.msg}') 
 
     def read():
@@ -51,7 +38,6 @@ class Note:
         return answer
 
     def delete(x):
-        #delete = input('File to Delete: ')
         if os.path.exists(f'./notes/{x}.txt'):
             os.remove(f'./notes/{x}.txt')
         else:
@@ -59,7 +45,6 @@ class Note:
             
 
     def encrypt(x):
-        #answer = input('Select a File: ')
         # opening the key
         with open('mykey.key', 'rb') as filekey:
             key = filekey.read()
@@ -80,7 +65,6 @@ class Note:
             encrypted_file.write(encrypted)
 
     def decrypt(x):
-        #answer = input('Select a File: ')
         # opening the key
         with open('mykey.key', 'rb') as filekey:
             key = filekey.read()
@@ -120,7 +104,7 @@ class Note:
         print('|  shTTY NOTES   |')
         print('|----------------|')
         print('| 1) new note    |')
-        print('| 2) read note   |')
+        print('| 2) open note   |')
         print('| 3) get key     |')
         print('|________________|') 
         print("\n Files:")
@@ -135,13 +119,10 @@ class Note:
 
     def selection(x):
         if x in nn:
-            print('-New Note-')
-            sleep(.5)
             Note.write()
-        elif x in rn:
-            dir_list = os.listdir(path)
-            print('-Read Note-')
-            sleep(.5)
+            print('-New Note-')
+        elif x in on:
+            print('-Open Note-')
             t = Note.read()
             back = input('hit ENTER to go back | d to Delete | e to Encrypt: | y to decrypt:')
             if back == '':
