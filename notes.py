@@ -6,7 +6,6 @@ from time import sleep
 
 # prints all files
 
-#q = ""
 nn = ['1','new', 'New', 'New Note', 'new note', 'n', 'nn']
 on = ['2','open', 'Open', 'Open Note', 'open note', 'o', 'r']
 gk = ['3', 'key', 'gk', 'get key', 'get']
@@ -23,8 +22,6 @@ class Note:
         print(m2)
 
         note = Note(m1,m2)
-        #print(f'Name: \n {m1}')
-        #print(f'Note: \n {m2}')
 
         print(f'{note.title} \n {note.msg}')
 
@@ -44,7 +41,6 @@ class Note:
         return answer
 
     def delete(x):
-        #delete = input('File to Delete: ')
         if os.path.exists(f'./notes/{x}.txt'):
             os.remove(f'./notes/{x}.txt')
         else:
@@ -52,7 +48,6 @@ class Note:
             
 
     def encrypt(x):
-        #answer = input('Select a File: ')
         # opening the key
         with open('mykey.key', 'rb') as filekey:
             key = filekey.read()
@@ -73,7 +68,6 @@ class Note:
             encrypted_file.write(encrypted)
 
     def decrypt(x):
-        #answer = input('Select a File: ')
         # opening the key
         with open('mykey.key', 'rb') as filekey:
             key = filekey.read()
@@ -94,7 +88,7 @@ class Note:
 
     def get_key():
         if os.path.exists('mykey.key'):
-            answer = input(f'mykey.key already exists! \n Would you like to change it? (y/n): \n ')
+            answer = input(f'mykey.key already exists! \n Would you like to change it? (y/n): ')
             if answer == 'n':
                 Note.doRun()
             elif answer == 'y':
@@ -155,7 +149,7 @@ class Note:
         elif x in on:
             print('-Open Note-')
             t = Note.read()
-            back = input('hit ENTER to go back | d to Delete | e to Encrypt: | y to decrypt:')
+            back = input('hit ENTER to go back | d to Delete | e to Encrypt: | y to decrypt:\n')
             if back == '':
                 pass
             if back == 'd':
