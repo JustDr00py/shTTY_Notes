@@ -94,7 +94,7 @@ class Note:
 
     def get_key():
         if os.path.exists('mykey.key'):
-            answer = input(f'mykey.key already exists! \n Would you like to change it? (y/n): ')
+            answer = input(f'mykey.key already exists! \n Would you like to change it? (y/n): \n ')
             if answer == 'n':
                 Note.doRun()
             elif answer == 'y':
